@@ -9,14 +9,16 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $password;
     public $authKey;
     public $accessToken;
+    public $api_key;
 
     private static $users = [
         '100' => [
             'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
+            'username' => 'test_api@moneymoo.ru',
+            'password' => 'Qwe!231@#',
             'authKey' => 'test100key',
             'accessToken' => '100-token',
+            'api_key' => '6471a4b2688dc342d7356d2e183f3d7e'
         ],
         '101' => [
             'id' => '101',
@@ -24,6 +26,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'password' => 'demo',
             'authKey' => 'test101key',
             'accessToken' => '101-token',
+            'api_key' => ''
         ],
     ];
 

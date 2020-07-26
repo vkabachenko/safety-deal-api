@@ -35,7 +35,7 @@ abstract class BaseModel extends Model
             ''
         );
         $paramsString .= $this->getApiKey();
-        //$paramsString = md5($paramsString);
+        $paramsString = md5($paramsString);
 
         if ($this->control !== $paramsString) {
             $this->addError('control', 'Control check fail');
@@ -58,7 +58,7 @@ abstract class BaseModel extends Model
 
     protected function getApiKey(): string
     {
-        return \Yii::$app->user->isGuest ? '' : \Yii::$app->user->identity->api_key;
+        return \Yii::$app->user->identity->api_key;
     }
 
 }

@@ -12,8 +12,10 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => false,
-            'enableSession' => false
+            'enableAutoLogin' => true,
+        ],
+        'request' => [
+          'cookieValidationKey' => 'test'
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
