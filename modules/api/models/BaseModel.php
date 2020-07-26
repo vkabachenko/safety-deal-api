@@ -44,18 +44,12 @@ abstract class BaseModel extends Model
 
     public function response(): array
     {
-        if (!self::validate()) {
+        if (self::validate()) {
+            return $this->calculate();
+        } else {
             return [
                 'status' => self::STATUS_VALIDATION_ERRORS,
                 'message' => Json::encode(self::getErrors())
-            ];
-        } else {
-            $result = $this->calculate();
-            return [
-                'status' => self::STATUS_SUCCESS,
-                'message' => $result['message'] ?? null,
-                'type' => $result['type'] ?? null,
-                'result' => $result['result'] ?? null
             ];
         }
     }
@@ -64,7 +58,7 @@ abstract class BaseModel extends Model
 
     protected function getApiKey(): string
     {
-        return \Yii::$app->user ? \Yii::$app->user->identity->api_key : '';
+        return \Yii::$app->user->isGuest ? '' : \Yii::$app->user->identity->api_key;
     }
 
 }

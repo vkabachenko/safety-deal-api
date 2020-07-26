@@ -18,9 +18,13 @@ class CommissionModel extends BaseModel
         return array_merge($rules, parent::rules());
     }
 
+    /**
+     * @todo Should be replaced with real calculations
+     */
     protected function calculate(): array
     {
         return [
+            'status' => static::STATUS_SUCCESS,
             'type' => 'string',
             'message' => 'Service commissian',
             'result' => '5500'
