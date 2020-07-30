@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace app\modules\api\controllers;
 
 use app\models\User;
+use app\modules\api\models\AgreementModel;
 use app\modules\api\models\BaseModel;
 use app\modules\api\models\CommissionModel;
 use yii\filters\AccessControl;
@@ -35,12 +36,18 @@ class DefaultController extends Controller
     {
         return [
             'commission' => ['GET'],
+            'agreement' => ['POST']
         ];
     }
 
     public function actionCommission(): array
     {
         return $this->act($this->request->queryParams, CommissionModel::class);
+    }
+
+    public function actionAgreement(): array
+    {
+        return $this->act($this->request->queryParams, AgreementModel::class);
     }
 
     public function auth(string $login, string $password): ?User
