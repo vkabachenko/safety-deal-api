@@ -8,6 +8,7 @@ use app\modules\api\models\AgreementModel;
 use app\modules\api\models\BaseModel;
 use app\modules\api\models\CommissionModel;
 use app\modules\api\models\ContractModel;
+use app\modules\api\models\ContractStatusModel;
 use app\modules\api\models\CreateContractModel;
 use app\modules\api\models\ListContractsModel;
 use yii\filters\AccessControl;
@@ -43,6 +44,7 @@ class DefaultController extends Controller
             'create-contract' => ['POST'],
             'list-contracts' => ['GET'],
             'get-contract' => ['GET'],
+            'get-contract-status' => ['GET'],
         ];
     }
 
@@ -69,6 +71,11 @@ class DefaultController extends Controller
     public function actionGetContract(): array
     {
         return $this->act($this->request->queryParams, ContractModel::class);
+    }
+
+    public function actionGetContractStatus(): array
+    {
+        return $this->act($this->request->queryParams, ContractStatusModel::class);
     }
 
     public function auth(string $login, string $password): ?User
