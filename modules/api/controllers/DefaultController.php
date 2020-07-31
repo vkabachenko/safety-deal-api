@@ -7,6 +7,7 @@ use app\models\User;
 use app\modules\api\models\AgreementModel;
 use app\modules\api\models\BaseModel;
 use app\modules\api\models\CommissionModel;
+use app\modules\api\models\CreateDealModel;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBasicAuth;
@@ -36,7 +37,8 @@ class DefaultController extends Controller
     {
         return [
             'commission' => ['GET'],
-            'agreement' => ['POST']
+            'agreement' => ['POST'],
+            'create-deal' => ['POST'],
         ];
     }
 
@@ -48,6 +50,11 @@ class DefaultController extends Controller
     public function actionAgreement(): array
     {
         return $this->act($this->request->queryParams, AgreementModel::class);
+    }
+
+    public function actionCreateDeal(): array
+    {
+        return $this->act($this->request->queryParams, CreateDealModel::class);
     }
 
     public function auth(string $login, string $password): ?User
