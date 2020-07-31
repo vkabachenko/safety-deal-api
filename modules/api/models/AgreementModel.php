@@ -99,7 +99,7 @@ class AgreementModel extends BaseModel
     /**
      * @return array
      * @todo currency_id - relation with Currency model
-     * @todo partner_contract_id - relation with PartnerContact model
+     * @todo partner_contract_id - relation with  model
      */
     public function rules(): array
     {

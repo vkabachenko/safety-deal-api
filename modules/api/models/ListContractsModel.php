@@ -4,7 +4,7 @@
 namespace app\modules\api\models;
 
 
-class ListDealsModel extends BaseModel
+class ListContractsModel extends BaseModel
 {
     public const PAGE_SIZE = 10;
 

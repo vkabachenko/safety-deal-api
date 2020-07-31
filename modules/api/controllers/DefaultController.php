@@ -7,8 +7,9 @@ use app\models\User;
 use app\modules\api\models\AgreementModel;
 use app\modules\api\models\BaseModel;
 use app\modules\api\models\CommissionModel;
-use app\modules\api\models\CreateDealModel;
-use app\modules\api\models\ListDealsModel;
+use app\modules\api\models\ContractModel;
+use app\modules\api\models\CreateContractModel;
+use app\modules\api\models\ListContractsModel;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBasicAuth;
@@ -37,14 +38,15 @@ class DefaultController extends Controller
     protected function verbs(): array
     {
         return [
-            'commission' => ['GET'],
+            'get-commission' => ['GET'],
             'agreement' => ['POST'],
-            'create-deal' => ['POST'],
-            'list-deals' => ['GET'],
+            'create-contract' => ['POST'],
+            'list-contracts' => ['GET'],
+            'get-contract' => ['GET'],
         ];
     }
 
-    public function actionCommission(): array
+    public function actionGetCommission(): array
     {
         return $this->act($this->request->queryParams, CommissionModel::class);
     }
@@ -54,14 +56,19 @@ class DefaultController extends Controller
         return $this->act($this->request->queryParams, AgreementModel::class);
     }
 
-    public function actionCreateDeal(): array
+    public function actionCreateContract(): array
     {
-        return $this->act($this->request->queryParams, CreateDealModel::class);
+        return $this->act($this->request->queryParams, CreateContractModel::class);
     }
 
-    public function actionListDeals(): array
+    public function actionListContracts(): array
     {
-        return $this->act($this->request->queryParams, ListDealsModel::class);
+        return $this->act($this->request->queryParams, ListContractsModel::class);
+    }
+
+    public function actionGetContract(): array
+    {
+        return $this->act($this->request->queryParams, ContractModel::class);
     }
 
     public function auth(string $login, string $password): ?User

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace app\modules\api\models;
 
 
-class CreateDealModel extends AgreementModel
+class CreateContractModel extends AgreementModel
 {
     /**
      * @todo Should be replaced with real calculations
