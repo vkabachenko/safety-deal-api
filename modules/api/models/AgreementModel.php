@@ -9,25 +9,14 @@ class AgreementModel extends BaseModel
     public const LEGAL_ENTITY = 2; //Юрлицо
 
     protected $controlParams = [
-        'name',
-        'description',
         'amount',
         'currency_id',
         'date_end',
         'partner_contract_id',
-        'partner_product_link',
         'buyer_type',
         'buyer_email',
         'buyer_first_name',
         'buyer_last_name',
-        'buyer_country_name',
-        'buyer_city_name',
-        'buyer_time_zone',
-        'buyer_phone',
-        'partner_buyer_link',
-        'buyer_ul_country_name',
-        'buyer_ul_city_name',
-        'buyer_company_name',
         'buyer_inn',
         'buyer_kpp',
         'buyer_ogrn',
@@ -35,39 +24,13 @@ class AgreementModel extends BaseModel
         'seller_email',
         'seller_first_name',
         'seller_last_name',
-        'seller_country_name',
-        'seller_city_name',
-        'seller_time_zone',
-        'seller_phone',
-        'partner_seller_link',
-        'seller_ul_country_name',
-        'seller_ul_city_name',
-        'seller_company_name',
-        'seller_inn',
-        'seller_kpp',
-        'seller_ogrn',
-        'bank_receiver_name',
-        'bank_inn',
-        'bank_bic',
-        'bank_account',
-        'card_receiver_name',
-        'card_inn',
-        'card_bic',
-        'card_account',
-        'card_number',
-        'yandex_account',
-        'bank_ul_receiver_name',
-        'bank_ul_inn',
-        'bank_ul_kpp',
-        'bank_ul_bic',
-        'bank_ul_account',
     ];
 
     // Сделка
     public  $name;
     public  $description;
     public  $amount;
-    public  $currency_id;
+    public  $currency_id = self::DEFAULT_CURRENCY_ID;
     public  $date_end;
     public  $partner_contract_id;
     public  $partner_product_link;

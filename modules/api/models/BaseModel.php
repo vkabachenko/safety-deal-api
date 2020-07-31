@@ -12,6 +12,8 @@ abstract class BaseModel extends Model
     public const STATUS_VALIDATION_ERRORS = 1;
     public const STATUS_EXCEPTION_ERRORS = 2;
 
+    public const DEFAULT_CURRENCY_ID = 1;
+
     protected $controlParams = [];
 
     public $control;
