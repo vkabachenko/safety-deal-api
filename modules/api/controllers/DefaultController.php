@@ -11,6 +11,8 @@ use app\modules\api\models\ContractModel;
 use app\modules\api\models\ContractStatusModel;
 use app\modules\api\models\CreateContractModel;
 use app\modules\api\models\ListContractsModel;
+use app\modules\api\models\OpenContractModel;
+use app\modules\api\models\SetContractStatusModel;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBasicAuth;
@@ -45,6 +47,8 @@ class DefaultController extends Controller
             'list-contracts' => ['GET'],
             'get-contract' => ['GET'],
             'get-contract-status' => ['GET'],
+            'set-contract-status' => ['POST'],
+            'open-contract' => ['POST'],
         ];
     }
 
@@ -76,6 +80,16 @@ class DefaultController extends Controller
     public function actionGetContractStatus(): array
     {
         return $this->act($this->request->queryParams, ContractStatusModel::class);
+    }
+
+    public function actionSetContractStatus(): array
+    {
+        return $this->act($this->request->queryParams, SetContractStatusModel::class);
+    }
+
+    public function actionOpenContract(): array
+    {
+        return $this->act($this->request->queryParams, OpenContractModel::class);
     }
 
     public function auth(string $login, string $password): ?User

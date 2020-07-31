@@ -14,7 +14,7 @@ class ContractStatusModel extends ContractModel
         return [
             'status' => static::STATUS_SUCCESS,
             'type' => 'object',
-            'message' => 'Link to confirmation page',
+            'message' => 'Contract status info',
             'result' => [
                 'partner_contract_id' => '124',
 		        'status' => 'Выполняется',

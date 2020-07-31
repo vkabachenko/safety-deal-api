@@ -37,7 +37,7 @@ class ContractModel extends BaseModel
         return [
             'status' => static::STATUS_SUCCESS,
             'type' => 'object',
-            'message' => 'Link to confirmation page',
+            'message' => 'Contract info',
             'result' => [
                 'partner_contract_id' => '124'
             ]
