@@ -46,6 +46,9 @@ class ListContractsModel extends BaseModel
         if (empty($this->buyer_email) && empty($this->seller_email)) {
             $this->addError($attribute, 'buyer_email or seller_email is required');
         }
+        if (!empty($this->buyer_email) && !empty($this->seller_email)) {
+            $this->addError($attribute, 'both buyer_email and seller_email can\'t be filled');
+        }
     }
 
     /**

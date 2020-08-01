@@ -17,7 +17,7 @@ class OpenContractModel extends ContractModel
     public function rules(): array
     {
         $rules = [
-            [['contract_hash', 'status'], 'required'],
+            [['contract_hash'], 'required'],
             ['contract_hash', 'string', 'max' => 16],
         ];
         return array_merge($rules, parent::rules());
