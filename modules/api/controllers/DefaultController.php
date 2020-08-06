@@ -59,12 +59,12 @@ class DefaultController extends Controller
 
     public function actionAgreement(): array
     {
-        return $this->act($this->request->queryParams, AgreementModel::class);
+        return $this->act($this->request->post(), AgreementModel::class);
     }
 
     public function actionCreateContract(): array
     {
-        return $this->act($this->request->queryParams, CreateContractModel::class);
+        return $this->act($this->request->post(), CreateContractModel::class);
     }
 
     public function actionListContracts(): array
@@ -84,12 +84,12 @@ class DefaultController extends Controller
 
     public function actionSetContractStatus(): array
     {
-        return $this->act($this->request->queryParams, SetContractStatusModel::class);
+        return $this->act($this->request->post(), SetContractStatusModel::class);
     }
 
     public function actionOpenContract(): array
     {
-        return $this->act($this->request->queryParams, OpenContractModel::class);
+        return $this->act($this->request->post(), OpenContractModel::class);
     }
 
     public function auth(string $login, string $password): ?User
