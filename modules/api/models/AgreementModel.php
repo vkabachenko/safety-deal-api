@@ -18,8 +18,6 @@ class AgreementModel extends BaseModel
         'buyer_first_name',
         'buyer_last_name',
         'buyer_inn',
-        'buyer_kpp',
-        'buyer_ogrn',
         'seller_type',
         'seller_email',
         'seller_first_name',
@@ -131,11 +129,11 @@ class AgreementModel extends BaseModel
             [['buyer_type', 'seller_type'], 'in', 'range' => [self::INDIVIDUAL, self::LEGAL_ENTITY]],
             [['buyer_email', 'seller_email'], 'email'],
             [['buyer_time_zone', 'seller_time_zone'], 'integer'],
-            [['buyer_phone', 'seller_phone'], 'match', 'pattern' => '/^\+\d{10}$/'],
+            [['buyer_phone', 'seller_phone'], 'match', 'pattern' => '/^\+\d{11}$/'],
             [['buyer_company_name', 'seller_company_name'], 'string', 'max' => 2000],
+            ['buyer_inn', 'required', 'when' => function(AgreementModel  $model) {return $model->buyer_type == self::LEGAL_ENTITY;}],
             [['buyer_inn', 'buyer_kpp', 'buyer_ogrn', 'seller_inn', 'seller_kpp', 'seller_ogrn'], 'string', 'max' => 15],
-            ['buyer_inn', 'validateBuyerInn'],
-            ['seller_inn', 'validateSellerInn'],
+            ['seller_inn', 'required', 'when' => function(AgreementModel  $model) {return $model->seller_type == self::LEGAL_ENTITY;}],
             [
                 [
                 'bank_receiver_name', 'card_receiver_name', 'bank_ul_receiver_name'
@@ -155,20 +153,6 @@ class AgreementModel extends BaseModel
         return array_merge($rules, parent::rules());
     }
 
-
-    public function validateBuyerInn($attribute, $params)
-    {
-        if ($this->buyer_type == self::LEGAL_ENTITY && empty($this->buyer_inn)) {
-            $this->addError('buyer_inn', 'Buyer_inn can\'t be blank for a legal entity');
-        }
-    }
-
-    public function validateSellerInn($attribute, $params)
-    {
-        if ($this->seller_type == self::LEGAL_ENTITY && empty($this->seller_inn)) {
-            $this->addError('seller_inn', 'Seller_inn can\'t be blank for a legal entity');
-        }
-    }
 
     public function validateSellerBankForIndividual($attribute, $params)
     {
