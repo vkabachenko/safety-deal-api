@@ -162,14 +162,14 @@ class AgreementModel extends BaseModel
 
         if (
             $this->seller_type == self::INDIVIDUAL
-            && empty($this->$attribute)
+            && !empty($this->$attribute)
             && (
-                !empty($this->bank_receiver_name)
-                || !empty($this->bank_inn)
-                || !empty($this->bank_bic) 
-                || !empty($this->bank_account)
+                empty($this->bank_receiver_name)
+                || empty($this->bank_inn)
+                || empty($this->bank_bic)
+                || empty($this->bank_account)
             )) {
-            $this->addError($attribute, sprintf('%s can\'t be blank for an individual', $attribute));
+            $this->addError($attribute, sprintf('The bank details of the seller must all be filled in', $attribute));
             }
     }
 
@@ -181,15 +181,15 @@ class AgreementModel extends BaseModel
 
         if (
             $this->seller_type == self::INDIVIDUAL
-            && empty($this->$attribute)
+            && !empty($this->$attribute)
             && (
-                !empty($this->card_receiver_name)
-                || !empty($this->card_inn)
-                || !empty($this->card_bic)
-                || !empty($this->card_account)
-                || !empty($this->card_number)
+                empty($this->card_receiver_name)
+                || empty($this->card_inn)
+                || empty($this->card_bic)
+                || empty($this->card_account)
+                || empty($this->card_number)
             )) {
-            $this->addError($attribute, sprintf('%s can\'t be blank for an individual', $attribute));
+            $this->addError($attribute, sprintf('The card details of the seller must all be filled in', $attribute));
         }
     }
 
@@ -201,15 +201,15 @@ class AgreementModel extends BaseModel
 
         if (
             $this->seller_type == self::LEGAL_ENTITY
-            && empty($this->$attribute)
+            && !empty($this->$attribute)
             && (
-                !empty($this->bank_ul_receiver_name)
-                || !empty($this->bank_ul_inn)
-                || !empty($this->bank_ul_kpp)
-                || !empty($this->bank_ul_bic)
-                || !empty($this->bank_ul_account)
+                empty($this->bank_ul_receiver_name)
+                || empty($this->bank_ul_inn)
+                || empty($this->bank_ul_kpp)
+                || empty($this->bank_ul_bic)
+                || empty($this->bank_ul_account)
             )) {
-            $this->addError($attribute, sprintf('%s can\'t be blank for a legal entity', $attribute));
+            $this->addError($attribute, sprintf('The bank details of the seller must all be filled in', $attribute));
         }
     }
 
