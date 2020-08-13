@@ -169,7 +169,7 @@ class AgreementModel extends BaseModel
                 || empty($this->bank_bic)
                 || empty($this->bank_account)
             )) {
-            $this->addError($attribute, sprintf('The bank details of the seller must all be filled in', $attribute));
+            $this->addError($attribute, 'The bank details of the seller must all be filled in');
             }
     }
 
@@ -189,7 +189,7 @@ class AgreementModel extends BaseModel
                 || empty($this->card_account)
                 || empty($this->card_number)
             )) {
-            $this->addError($attribute, sprintf('The card details of the seller must all be filled in', $attribute));
+            $this->addError($attribute, 'The card details of the seller must all be filled in');
         }
     }
 
@@ -209,7 +209,7 @@ class AgreementModel extends BaseModel
                 || empty($this->bank_ul_bic)
                 || empty($this->bank_ul_account)
             )) {
-            $this->addError($attribute, sprintf('The bank details of the seller must all be filled in', $attribute));
+            $this->addError($attribute, 'The bank details of the seller must all be filled in');
         }
     }
 
